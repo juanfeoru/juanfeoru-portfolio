@@ -1,0 +1,20 @@
+---
+import { projects } from '../../data/projects';
+import ProjectCard from './Projects/ProjectCard.astro';
+---
+
+<section id='projects' class='bg-black py-14 px-6'>
+  <div class='max-w-[1440px] mx-auto'>
+    <h2 class='text-center text-3xl md:text-4xl font-bold text-white'>
+      My <span class='font-extrabold'>Projects</span>
+    </h2>
+
+    <div class='mt-14 flex flex-col gap-20'>
+      {
+        projects.map((project, index) => (
+          <ProjectCard project={project} index={index} />
+        ))
+      }
+    </div>
+  </div>
+</section>

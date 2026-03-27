@@ -1,0 +1,40 @@
+---
+import { skillGroups } from '../../data/skills';
+---
+
+<section id='skills' class='py-20 max-w-[1440px] mx-auto px-6'>
+  <h2 class='text-3xl md:text-4xl text-center mb-12'>
+    My <span class='font-bold'>Skills</span>
+  </h2>
+
+  <p class='text-zinc-500 text-center max-w-xl mx-auto mb-12'>
+    Technologies and tools I use to build modern web applications.
+  </p>
+
+  <div class='flex flex-col gap-12'>
+    {
+      skillGroups.map((group) => (
+        <div>
+          <h3 class='text-xl font-semibold mb-6 text-center'>
+            {group.category}
+          </h3>
+
+          <div class='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
+            {group.skills.map((skill) => {
+              const Icon = skill.icon;
+
+              return (
+                <div class='group flex flex-col items-center justify-center gap-4 p-6 border-2 border-black rounded-lg transition-all duration-300 hover:bg-linear-to-br hover:from-black hover:to-neutral-700 hover:-translate-y-1 hover:shadow-md '>
+                  <Icon class='size-12 md:size-14 group-hover:invert transition-all duration-300 group-hover:scale-110' />
+                  <p class='font-semibold text-sm group-hover:text-white'>
+                    {skill.name}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

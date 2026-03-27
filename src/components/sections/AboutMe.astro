@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import aboutme from '../../assets/icons/aboutme.svg';
+---
+
+<section id='about' class='py-20 px-6'>
+  <div class='max-w-[1440px] mx-auto grid md:grid-cols-2 gap-12 items-center'>
+    <div class='flex justify-center'>
+      <Image
+        src={aboutme}
+        alt='Illustration representing the developer'
+        class='max-w-[500px] w-full'
+      />
+    </div>
+
+    <div class='flex flex-col gap-6'>
+      <h2 class='text-3xl md:text-4xl'>
+        About <span class='font-extrabold'>Me</span>
+      </h2>
+
+      <p class='text-zinc-500 leading-relaxed'>
+        I am a frontend developer focused on building modern, responsive, and
+        user-friendly web applications. I enjoy transforming ideas into clean
+        interfaces and smooth digital experiences.
+      </p>
+
+      <p class='text-zinc-500 leading-relaxed'>
+        My main stack includes technologies such as JavaScript, TypeScript,
+        Astro, React, and Tailwind CSS. I enjoy working on projects where
+        performance, accessibility, and design all matter.
+      </p>
+
+      <p class='text-zinc-500 leading-relaxed'>
+        Currently, I am improving my skills in full-stack development while
+        building projects that help me grow as a developer.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import hero from '../../assets/icons/hero.svg';
+import { socialLinks } from '../../data/socialLinks';
+---
+
+<section
+  class='max-w-[1440px] mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center'
+>
+  <div class='order-2 md:order-1'>
+    <h1 class='text-3xl md:text-4xl lg:text-5xl leading-tight'>
+      Hi, I'm <span class='font-bold'>Juan Ortega</span>
+      <br />
+      Frontend Developer building
+      <span class='font-bold'>modern web experiences</span>
+    </h1>
+
+    <p class='text-zinc-500 mt-6 max-w-lg leading-relaxed'>
+      I build modern, responsive and user-friendly web applications focused on
+      performance, accessibility and clean design.
+    </p>
+
+    <div class='flex gap-4 mt-8'>
+      <a
+        href='#projects'
+        class='group bg-black text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2'
+      >
+        View Projects
+        <span class='transition-transform group-hover:translate-x-1'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='24'
+            height='24'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='1.5'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            class='icon icon-tabler icons-tabler-outline icon-tabler-arrow-right'
+            ><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path
+              d='M5 12l14 0'></path><path d='M13 18l6 -6'></path><path
+              d='M13 6l6 6'></path></svg
+          >
+        </span>
+      </a>
+      <a
+        href='#contact'
+        class='group border-2 border-black px-6 py-3 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2'
+      >
+        Contact
+      </a>
+    </div>
+
+    <div class='flex gap-6 mt-8'>
+      {
+        socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith('mailto') ? undefined : '_blank'}
+            rel='noopener noreferrer'
+            aria-label={link.name}
+            class='border-2 border-black group rounded-lg p-3 hover:bg-black hover:scale-110 transition'
+          >
+            <img
+              src={link.icon}
+              alt={link.name}
+              class='size-6 group-hover:invert'
+            />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class='order-1 md:order-2'>
+    <Image src={hero} alt='Developer illustration' class='relative right-7' />
+  </div>
+</section>
