@@ -8,7 +8,7 @@ export default function ContactMe() {
           <form
             name='contact'
             method='POST'
-            data-netlify='true'
+            netlify
             action='/thank-you'
           >
             <div className='flex flex-col gap-2'>
