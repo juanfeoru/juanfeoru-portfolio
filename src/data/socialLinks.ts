@@ -9,7 +9,7 @@ interface SocialLink {
   icon: AstroComponentFactory;
 }
 
-export const socialLinksAstro: SocialLink[] = [
+export const socialLinks: SocialLink[] = [
   {
     name: 'GitHub',
     href: 'https://github.com/juanfeoru',

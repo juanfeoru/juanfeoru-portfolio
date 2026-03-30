@@ -1,0 +1,68 @@
+---
+import { navLinks } from '../../data/navLinks';
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<div class='md:hidden z-50'>
+  <button
+    id="mobile-menu-btn"
+    aria-label='Toggle navigation menu'
+    aria-expanded="false"
+    class='focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded p-1'
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark:text-primary-textDark">
+      <line x1="4" x2="20" y1="12" y2="12"></line>
+      <line x1="4" x2="20" y1="6" y2="6"></line>
+      <line x1="4" x2="20" y1="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <div
+    id="mobile-menu-content"
+    class="bg-black absolute top-18 right-3 left-3 rounded-lg text-white text-center p-8 transition-all duration-300 ease-out dark:bg-primary-textDark opacity-0 -translate-y-4 pointer-events-none"
+  >
+    <ul class='flex flex-col gap-8 font-bold'>
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class='mobile-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded p-1 dark:text-primary-bgDark'
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class='flex justify-center mt-8'>
+      <ThemeToggle />
+    </div>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu-content');
+  const links = document.querySelectorAll('.mobile-link');
+  let isOpen = false;
+
+  function toggleMenu() {
+    isOpen = !isOpen;
+    btn?.setAttribute('aria-expanded', isOpen.toString());
+    
+    if (isOpen) {
+      menu?.classList.remove('opacity-0', '-translate-y-4', 'pointer-events-none');
+      menu?.classList.add('opacity-100', 'translate-y-0');
+    } else {
+      menu?.classList.add('opacity-0', '-translate-y-4', 'pointer-events-none');
+      menu?.classList.remove('opacity-100', 'translate-y-0');
+    }
+  }
+
+  btn?.addEventListener('click', toggleMenu);
+  
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isOpen) toggleMenu();
+    });
+  });
+</script>

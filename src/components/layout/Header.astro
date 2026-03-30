@@ -1,6 +1,6 @@
 ---
 import Logo from '../../assets/icons/Logo.astro';
-import MobileNavigation from './MobileNavigation';
+import MobileNavigation from './MobileNavigation.astro';
 import { navLinks } from '../../data/navLinks';
 import ThemeToggle from './ThemeToggle.astro';
 ---
@@ -19,7 +19,8 @@ import ThemeToggle from './ThemeToggle.astro';
         <span class='font-bold text-xl'>juanfe.dev</span>
       </a>
     </div>
-    <MobileNavigation client:load />
+    
+    <MobileNavigation />
 
     <div class='hidden md:block'>
       <ul class='flex gap-8'>

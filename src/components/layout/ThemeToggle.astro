@@ -3,7 +3,9 @@ import Sun from '../../assets/icons/Sun.astro';
 import Moon from '../../assets/icons/Moon.astro';
 ---
 
-<button id='theme-toggle' class='cursor-pointer dark:text-neutral-100'>
+<button
+  class='theme-toggle cursor-pointer text-black dark:text-primary-textDark'
+>
   <span class='block dark:hidden'>
     <Moon />
   </span>
@@ -14,8 +16,6 @@ import Moon from '../../assets/icons/Moon.astro';
 </button>
 
 <script>
-  const btn = document.getElementById('theme-toggle');
-
   function switchTheme() {
     const html = document.documentElement;
 
@@ -37,5 +37,8 @@ import Moon from '../../assets/icons/Moon.astro';
     document.startViewTransition(() => switchTheme());
   }
 
-  btn?.addEventListener('click', toggleTheme);
+  // Bind to all elements with class 'theme-toggle'
+  document.querySelectorAll('.theme-toggle').forEach((btn) => {
+    btn.addEventListener('click', toggleTheme);
+  });
 </script>
