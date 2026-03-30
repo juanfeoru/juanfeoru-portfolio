@@ -1,5 +1,9 @@
 ---
 import Aboutme from '../../assets/icons/Aboutme.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id='about' class='py-20 px-6'>
@@ -10,24 +14,19 @@ import Aboutme from '../../assets/icons/Aboutme.astro';
 
     <div class='flex flex-col gap-6'>
       <h2 class='text-3xl md:text-4xl'>
-        About <span class='font-extrabold'>Me</span>
+        {t('about.title.about')} <span class='font-extrabold'>{t('about.title.me')}</span>
       </h2>
 
       <p class='text-zinc-500 leading-relaxed dark:text-zinc-400'>
-        I am a frontend developer focused on building modern, responsive, and
-        user-friendly web applications. I enjoy transforming ideas into clean
-        interfaces and smooth digital experiences.
+        {t('about.p1')}
       </p>
 
       <p class='text-zinc-500 leading-relaxed dark:text-zinc-400'>
-        My main stack includes technologies such as JavaScript, TypeScript,
-        Astro, React, and Tailwind CSS. I enjoy working on projects where
-        performance, accessibility, and design all matter.
+        {t('about.p2')}
       </p>
 
       <p class='text-zinc-500 leading-relaxed dark:text-zinc-400'>
-        Currently, I am improving my skills in full-stack development while
-        building projects that help me grow as a developer.
+        {t('about.p3')}
       </p>
     </div>
   </div>

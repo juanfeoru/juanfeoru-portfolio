@@ -6,6 +6,13 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://juanfeoru-portfolio.netlify.app/',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

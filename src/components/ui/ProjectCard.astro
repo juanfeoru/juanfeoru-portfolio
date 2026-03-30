@@ -2,6 +2,10 @@
 const { project, index } = Astro.props;
 import { Image } from 'astro:assets';
 import Github from '../../assets/icons/skills/Github.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <article
@@ -28,7 +32,7 @@ import Github from '../../assets/icons/skills/Github.astro';
         rel='noopener noreferrer'
         class='px-6 py-3 bg-white text-black font-semibold rounded-lg opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition duration-300 dark:bg-primary-bgDark dark:text-primary-textDark'
       >
-        Live Demo
+        {t('projects.liveDemo')}
       </a>
     </div>
   </div>
@@ -42,19 +46,19 @@ import Github from '../../assets/icons/skills/Github.astro';
       <h3
         class='text-white text-3xl font-bold text-pretty dark:text-primary-bgDark'
       >
-        {project.name}
+        {t(`project.${project.id}.name` as keyof typeof import('../../i18n/ui').ui.en)}
       </h3>
     </div>
 
     <p class='text-zinc-500 text-pretty dark:text-zinc-600'>
-      {project.description}
+      {t(`project.${project.id}.description` as keyof typeof import('../../i18n/ui').ui.en)}
     </p>
     <a
       href={project.github}
       target='_blank'
       rel='noopener noreferrer'
       class='text-zinc-400 hover:text-white transition'
-      aria-label='View GitHub repository'
+      aria-label={t('projects.viewGithub')}
     >
       <Github
         class='w-6 h-6 dark:text-primary-bgDark dark:hover:text-primary-bgDark/80 hover:scale-110 transition duration-300'

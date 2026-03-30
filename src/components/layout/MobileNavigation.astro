@@ -1,6 +1,11 @@
 ---
 import { navLinks } from '../../data/navLinks';
 import ThemeToggle from './ThemeToggle.astro';
+import LanguageToggle from './LanguageToggle.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class='md:hidden z-50'>
@@ -22,18 +27,21 @@ import ThemeToggle from './ThemeToggle.astro';
     class="bg-black absolute top-18 right-3 left-3 rounded-lg text-white text-center p-8 transition-all duration-300 ease-out dark:bg-primary-textDark opacity-0 -translate-y-4 pointer-events-none"
   >
     <ul class='flex flex-col gap-8 font-bold'>
-      {navLinks.map((link) => (
+      {navLinks.map((link) => {
+        const key = `nav.${link.href.replace('#', '')}` as keyof typeof import('../../i18n/ui').ui.en;
+        return (
         <li>
           <a
             href={link.href}
             class='mobile-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded p-1 dark:text-primary-bgDark'
           >
-            {link.name}
+            {t(key)}
           </a>
         </li>
-      ))}
+      )})}
     </ul>
-    <div class='flex justify-center mt-8'>
+    <div class='flex justify-center items-center gap-6 mt-8'>
+      <LanguageToggle />
       <ThemeToggle />
     </div>
   </div>

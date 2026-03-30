@@ -3,6 +3,11 @@ import Logo from '../../assets/icons/Logo.astro';
 import MobileNavigation from './MobileNavigation.astro';
 import { navLinks } from '../../data/navLinks';
 import ThemeToggle from './ThemeToggle.astro';
+import LanguageToggle from './LanguageToggle.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-primary-bgDark/70 border-b border-transparent transition-colors duration-300">
@@ -12,7 +17,7 @@ import ThemeToggle from './ThemeToggle.astro';
   >
     <div>
       <a
-        href='/'
+        href={lang === 'en' ? '/' : `/${lang}/`}
         class='flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded'
       >
         <Logo />
@@ -25,20 +30,23 @@ import ThemeToggle from './ThemeToggle.astro';
     <div class='hidden md:block'>
       <ul class='flex gap-8'>
         {
-          navLinks.map((link) => (
+          navLinks.map((link) => {
+            const key = `nav.${link.href.replace('#', '')}` as keyof typeof import('../../i18n/ui').ui.en;
+            return (
             <li class='font-bold text-lg lg:text-xl relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all hover:after:w-full dark:after:bg-primary-textDark'>
               <a
                 href={link.href}
                 class='focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-8 rounded'
               >
-                {link.name}
+                {t(key)}
               </a>
             </li>
-          ))
+          )})
         }
       </ul>
     </div>
-    <div class='hidden md:block'>
+    <div class='hidden md:flex items-center gap-6'>
+      <LanguageToggle />
       <ThemeToggle />
     </div>
   </nav>

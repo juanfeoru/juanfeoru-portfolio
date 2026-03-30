@@ -1,6 +1,10 @@
 ---
 import { projects } from '../../data/projects';
 import ProjectCard from '../ui/ProjectCard.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id='projects' class='bg-black py-14 px-6 dark:bg-primary-textDark'>
@@ -8,7 +12,7 @@ import ProjectCard from '../ui/ProjectCard.astro';
     <h2
       class='text-center text-3xl md:text-4xl font-bold text-white dark:text-primary-bgDark'
     >
-      My <span class='font-extrabold'>Projects</span>
+      {t('projects.title.my')}<span class='font-extrabold'>{t('projects.title.projects')}</span>
     </h2>
 
     <div class='mt-14 flex flex-col gap-20'>

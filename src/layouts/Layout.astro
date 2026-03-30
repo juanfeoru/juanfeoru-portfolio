@@ -2,10 +2,17 @@
 import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const siteTitle = lang === 'en' ? 'Juan Ortega | Frontend Developer' : 'Juan Ortega | Desarrollador Frontend';
+const siteDescription = lang === 'en' 
+  ? 'Portfolio of Juan Ortega, a Frontend Developer building modern, responsive, and user-friendly web applications.'
+  : 'Portafolio de Juan Ortega, un Desarrollador Frontend enfocado en crear aplicaciones web modernas, responsivas y amigables.';
 ---
 
 <!doctype html>
-<html lang='en' class='scroll-smooth'>
+<html lang={lang} class='scroll-smooth'>
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width' />
@@ -14,25 +21,34 @@ import Footer from '../components/layout/Footer.astro';
     <meta name='generator' content={Astro.generator} />
     <meta
       name='description'
-      content='Portfolio of Juan Ortega, a Frontend Developer building modern, responsive, and user-friendly web applications.'
+      content={siteDescription}
     />
-    <title>Juan Ortega | Frontend Developer</title>
+    <title>{siteTitle}</title>
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content="Juan Ortega | Frontend Developer" />
-    <meta property="og:description" content="Portfolio of Juan Ortega, a Frontend Developer building modern, responsive, and user-friendly web applications." />
-    <meta property="og:image" content={new URL('/og-image.webp', Astro.url)} />
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={Astro.url} />
+    <meta property='og:title' content={siteTitle} />
+    <meta
+      property='og:description'
+      content={siteDescription}
+    />
+    <meta property='og:image' content={new URL('/og-image.webp', Astro.url)} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content="Juan Ortega | Frontend Developer" />
-    <meta property="twitter:description" content="Portfolio of Juan Ortega, a Frontend Developer building modern, responsive, and user-friendly web applications." />
-    <meta property="twitter:image" content={new URL('/og-image.webp', Astro.url)} />
+    <meta property='twitter:card' content='summary_large_image' />
+    <meta property='twitter:url' content={Astro.url} />
+    <meta property='twitter:title' content={siteTitle} />
+    <meta
+      property='twitter:description'
+      content={siteDescription}
+    />
+    <meta
+      property='twitter:image'
+      content={new URL('/og-image.webp', Astro.url)}
+    />
 
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel='canonical' href={new URL(Astro.url.pathname, Astro.site)} />
 
     <script is:inline>
       const theme = localStorage.getItem('theme');
@@ -48,19 +64,28 @@ import Footer from '../components/layout/Footer.astro';
     class='bg-white text-neutral-900 dark:bg-primary-bgDark dark:text-primary-textDark relative selection:bg-black selection:text-white dark:selection:bg-primary-textDark dark:selection:text-primary-bgDark'
   >
     <!-- Background glowing dots & blob (Aesthetics) -->
-    <div class="fixed inset-0 -z-10 h-full w-full bg-transparent">
-      <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#ffffff0a_1px,transparent_1px)]"></div>
-      <div class="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-zinc-300 dark:bg-zinc-800 opacity-50 blur-[100px] animate-pulse"></div>
+    <div class='fixed inset-0 -z-10 h-full w-full bg-transparent'>
+      <div
+        class='absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#ffffff0a_1px,transparent_1px)]'
+      >
+      </div>
+      <div
+        class='absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-zinc-300 dark:bg-zinc-800 opacity-50 blur-[100px] animate-pulse'
+      >
+      </div>
     </div>
 
     <!-- Skip to main content link (A11y) -->
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-black focus:text-white dark:focus:bg-primary-textDark dark:focus:text-primary-bgDark focus:rounded-br-lg transition-all">
+    <a
+      href='#main-content'
+      class='sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-black focus:text-white dark:focus:bg-primary-textDark dark:focus:text-primary-bgDark focus:rounded-br-lg transition-all'
+    >
       Skip to content
     </a>
 
     <Header />
 
-    <main id="main-content">
+    <main id='main-content'>
       <slot />
     </main>
 

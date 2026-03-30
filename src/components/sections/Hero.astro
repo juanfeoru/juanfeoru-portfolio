@@ -2,6 +2,10 @@
 import HeroIcon from '../../assets/icons/HeroIcon.astro';
 import { socialLinks } from '../../data/socialLinks';
 import RightArrow from '../../assets/icons/RightArrow.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section
@@ -9,15 +13,14 @@ import RightArrow from '../../assets/icons/RightArrow.astro';
 >
   <div class='order-2 md:order-1'>
     <h1 class='text-3xl md:text-4xl lg:text-5xl leading-tight'>
-      Hi, I'm <span class='font-bold'>Juan Ortega</span>
+      {t('hero.hi')} <span class='font-bold'>{t('hero.name')}</span>
       <br />
-      Frontend Developer building
-      <span class='font-bold'>modern web experiences</span>
+      {t('hero.role')}
+      <span class='font-bold'>{t('hero.modern')}</span>
     </h1>
 
     <p class='text-zinc-500 mt-6 max-w-lg leading-relaxed dark:text-zinc-400'>
-      I build modern, responsive and user-friendly web applications focused on
-      performance, accessibility and clean design.
+      {t('hero.description')}
     </p>
 
     <div class='flex gap-4 mt-8'>
@@ -25,7 +28,7 @@ import RightArrow from '../../assets/icons/RightArrow.astro';
         href='#projects'
         class='group bg-black text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 dark:bg-primary-textDark dark:text-primary-bgDark'
       >
-        View Projects
+        {t('hero.viewProjects')}
         <span class='transition-transform group-hover:translate-x-1'>
           <RightArrow />
         </span>
@@ -34,7 +37,7 @@ import RightArrow from '../../assets/icons/RightArrow.astro';
         href='#contact'
         class='group border-2 border-black px-6 py-3 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 dark:border-primary-textDark dark:hover:bg-primary-textDark dark:hover:text-primary-bgDark'
       >
-        Contact
+        {t('hero.contact')}
       </a>
     </div>
 

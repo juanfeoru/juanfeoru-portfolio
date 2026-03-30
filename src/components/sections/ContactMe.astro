@@ -2,6 +2,10 @@
 import { socialLinks } from '../../data/socialLinks';
 import Location from '../../assets/icons/Location.astro';
 import Briefcase from '../../assets/icons/Briefcase.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class='py-20 px-6' id='contact'>
@@ -14,32 +18,32 @@ import Briefcase from '../../assets/icons/Briefcase.astro';
         action='/thank-you'
       >
         <div class='flex flex-col gap-2'>
-          <label for='name' class='text-sm font-medium'> Your Name </label>
+          <label for='name' class='text-sm font-medium'> {t('contact.form.nameLabel')} </label>
           <input
             id='name'
             name='name'
             type='text'
             required
             class='border border-black bg-transparent rounded-md py-3 px-4 placeholder:text-zinc-500 transition dark:border-primary-textDark dark:placeholder:text-zinc-400'
-            placeholder='John Doe'
+            placeholder={t('contact.form.namePlaceholder')}
           />
         </div>
 
         <div class='flex flex-col gap-2'>
-          <label for='email' class='text-sm font-medium mt-2'> Email </label>
+          <label for='email' class='text-sm font-medium mt-2'> {t('contact.form.emailLabel')} </label>
           <input
             id='email'
             name='email'
             type='email'
             required
             class='border border-black bg-transparent rounded-md py-3 px-4 placeholder:text-zinc-500 transition dark:border-primary-textDark dark:placeholder:text-zinc-400'
-            placeholder='john@email.com'
+            placeholder={t('contact.form.emailPlaceholder')}
           />
         </div>
 
         <div class='flex flex-col gap-2'>
           <label for='message' class='text-sm font-medium mt-2'>
-            Message
+            {t('contact.form.messageLabel')}
           </label>
           <textarea
             id='message'
@@ -47,7 +51,7 @@ import Briefcase from '../../assets/icons/Briefcase.astro';
             required
             rows='4'
             class='border border-black bg-transparent rounded-md py-3 px-4 placeholder:text-zinc-500 transition dark:border-primary-textDark dark:placeholder:text-zinc-400'
-            placeholder='How can I help?'></textarea>
+            placeholder={t('contact.form.messagePlaceholder')}></textarea>
         </div>
 
         <div class='flex flex-wrap items-center gap-6 mt-2'>
@@ -55,7 +59,7 @@ import Briefcase from '../../assets/icons/Briefcase.astro';
             type='submit'
             class='bg-black text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 cursor-pointer dark:bg-primary-textDark dark:text-primary-bgDark'
           >
-            Get in touch
+            {t('contact.form.submit')}
           </button>
 
           <div class='flex gap-4'>
@@ -83,22 +87,21 @@ import Briefcase from '../../assets/icons/Briefcase.astro';
 
     <div class='flex flex-col gap-6 justify-center'>
       <h2 class='text-3xl md:text-4xl font-bold'>
-        Let's start a project together
+        {t('contact.info.title')}
       </h2>
 
       <p class='text-zinc-500 leading-relaxed dark:text-zinc-400'>
-        I'm always open to new opportunities and collaborations. If you have a
-        project in mind or want to discuss an idea, feel free to reach out.
+        {t('contact.info.description')}
       </p>
 
       <div class='flex flex-col gap-1 text-sm text-zinc-500 dark:text-zinc-400'>
         <span class='flex items-center gap-2'>
           <Location />
-          Bogotá, Colombia
+          {t('contact.info.location')}
         </span>
         <span class='flex items-center gap-2'>
           <Briefcase />
-          Available for freelance
+          {t('contact.info.availability')}
         </span>
       </div>
 
