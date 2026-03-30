@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://juanfeoru-portfolio.netlify.app/sitemap-index.xml

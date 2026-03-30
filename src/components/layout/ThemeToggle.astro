@@ -4,7 +4,8 @@ import Moon from '../../assets/icons/Moon.astro';
 ---
 
 <button
-  class='theme-toggle cursor-pointer text-black dark:text-primary-textDark'
+  class='theme-toggle cursor-pointer text-primary-textDark dark:text-black md:text-black md:dark:text-primary-textDark'
+  aria-label='Toggle dark mode'
 >
   <span class='block dark:hidden'>
     <Moon />
