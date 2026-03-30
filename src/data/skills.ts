@@ -1,17 +1,19 @@
-import html from '../assets/icons/skills/html.svg';
-import css from '../assets/icons/skills/css.svg';
-import javascript from '../assets/icons/skills/javascript.svg';
-import react from '../assets/icons/skills/react.svg';
-import tailwind from '../assets/icons/skills/tailwindcss.svg';
-import git from '../assets/icons/skills/git.svg';
-import typescript from '../assets/icons/skills/typescript.svg';
-import astro from '../assets/icons/skills/astro.svg';
-import github from '../assets/icons/skills/github.svg';
-import figma from '../assets/icons/skills/figma.svg';
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+
+import Html from '../assets/icons/skills/Html.astro';
+import Css from '../assets/icons/skills/Css.astro';
+import Javascript from '../assets/icons/skills/Javascript.astro';
+import React from '../assets/icons/skills/React.astro';
+import Tailwindcss from '../assets/icons/skills/Tailwindcss.astro';
+import Git from '../assets/icons/skills/Git.astro';
+import Typescript from '../assets/icons/skills/Typescript.astro';
+import AstroIcon from '../assets/icons/skills/AstroIcon.astro';
+import Github from '../assets/icons/skills/Github.astro';
+import Figma from '../assets/icons/skills/Figma.astro';
 
 interface Skill {
   name: string;
-  icon: ImageMetadata;
+  icon: AstroComponentFactory;
 }
 
 interface SkillCategory {
@@ -23,21 +25,21 @@ export const skillGroups: SkillCategory[] = [
   {
     category: 'Frontend',
     skills: [
-      { name: 'HTML', icon: html },
-      { name: 'CSS', icon: css },
-      { name: 'JavaScript', icon: javascript },
-      { name: 'React', icon: react },
-      { name: 'TypeScript', icon: typescript },
-      { name: 'Tailwind CSS', icon: tailwind },
-      { name: 'Astro', icon: astro },
+      { name: 'HTML', icon: Html },
+      { name: 'CSS', icon: Css },
+      { name: 'JavaScript', icon: Javascript },
+      { name: 'React', icon: React },
+      { name: 'TypeScript', icon: Typescript },
+      { name: 'Tailwind CSS', icon: Tailwindcss },
+      { name: 'Astro', icon: AstroIcon },
     ],
   },
   {
     category: 'Tools',
     skills: [
-      { name: 'Git', icon: git },
-      { name: 'GitHub', icon: github },
-      { name: 'Figma', icon: figma },
+      { name: 'Git', icon: Git },
+      { name: 'GitHub', icon: Github },
+      { name: 'Figma', icon: Figma },
     ],
   },
 ];
