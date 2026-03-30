@@ -7,7 +7,9 @@ import { skillGroups } from '../../data/skills';
     My <span class='font-bold'>Skills</span>
   </h2>
 
-  <p class='text-zinc-500 text-center max-w-xl mx-auto mb-12'>
+  <p
+    class='text-zinc-500 text-center max-w-xl mx-auto mb-12 dark:text-zinc-400'
+  >
     Technologies and tools I use to build modern web applications.
   </p>
 
@@ -24,9 +26,9 @@ import { skillGroups } from '../../data/skills';
               const Icon = skill.icon;
 
               return (
-                <div class='group flex flex-col items-center justify-center gap-4 p-6 border-2 border-black rounded-lg transition-all duration-300 hover:bg-linear-to-br hover:from-black hover:to-neutral-700 hover:-translate-y-1 hover:shadow-md '>
-                  <Icon class='size-12 md:size-14 group-hover:invert transition-all duration-300 group-hover:scale-110' />
-                  <p class='font-semibold text-sm group-hover:text-white'>
+                <div class='group flex flex-col items-center justify-center gap-4 p-6 border-2 border-black rounded-lg transition-all duration-300 hover:bg-linear-to-br hover:from-black hover:to-neutral-700 hover:-translate-y-1 hover:shadow-md dark:border-primary-textDark dark:hover:from-zinc-800 dark:hover:to-zinc-600'>
+                  <Icon class='size-12 md:size-14 text-dark group-hover:invert transition-all duration-300 group-hover:scale-110 dark:group-hover:invert-0 dark:text-white' />
+                  <p class='font-semibold text-sm group-hover:text-white dark:group-hover:text-primary-textDark'>
                     {skill.name}
                   </p>
                 </div>

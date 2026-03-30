@@ -1,18 +1,21 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../../assets/icons/logo.svg';
+import Logo from '../../assets/icons/Logo.astro';
 import MobileNavigation from './MobileNavigation';
 import { navLinks } from '../../data/navLinks';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
-<header class=''>
+<header>
   <nav
     aria-label='Main navigation'
     class='max-w-[1440px] mx-auto px-6 py-5 flex items-center justify-between'
   >
     <div>
-      <a href='/' class='flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded'>
-        <Image src={logo} alt='' />
+      <a
+        href='/'
+        class='flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 rounded'
+      >
+        <Logo />
         <span class='font-bold text-xl'>juanfe.dev</span>
       </a>
     </div>
@@ -22,12 +25,20 @@ import { navLinks } from '../../data/navLinks';
       <ul class='flex gap-8'>
         {
           navLinks.map((link) => (
-            <li class='font-bold text-lg lg:text-xl relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all hover:after:w-full'>
-              <a href={link.href} class='focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-8 rounded'>{link.name}</a>
+            <li class='font-bold text-lg lg:text-xl relative after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-black after:transition-all hover:after:w-full dark:after:bg-primary-textDark'>
+              <a
+                href={link.href}
+                class='focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-8 rounded'
+              >
+                {link.name}
+              </a>
             </li>
           ))
         }
       </ul>
+    </div>
+    <div class='hidden md:block'>
+      <ThemeToggle />
     </div>
   </nav>
 </header>

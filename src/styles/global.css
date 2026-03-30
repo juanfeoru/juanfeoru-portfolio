@@ -1,5 +1,12 @@
 @import 'tailwindcss';
 
+@theme {
+  --color-primary-bgDark: #0f0f0f;
+  --color-primary-textDark: #fafafa;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: 'Sora';
   src: url('../../public/font/Sora-VariableFont_wght.woff2') format('woff2');

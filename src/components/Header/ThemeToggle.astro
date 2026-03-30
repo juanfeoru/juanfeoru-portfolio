@@ -1,0 +1,41 @@
+---
+import Sun from '../../assets/icons/Sun.astro';
+import Moon from '../../assets/icons/Moon.astro';
+---
+
+<button id='theme-toggle' class='cursor-pointer dark:text-neutral-100'>
+  <span class='block dark:hidden'>
+    <Moon />
+  </span>
+
+  <span class='hidden dark:block'>
+    <Sun />
+  </span>
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+
+  function switchTheme() {
+    const html = document.documentElement;
+
+    html.classList.toggle('dark');
+
+    if (html.classList.contains('dark')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  function toggleTheme() {
+    if (!document.startViewTransition) {
+      switchTheme();
+      return;
+    }
+
+    document.startViewTransition(() => switchTheme());
+  }
+
+  btn?.addEventListener('click', toggleTheme);
+</script>

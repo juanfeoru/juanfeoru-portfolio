@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
-import hero from '../../assets/icons/hero.svg';
-import { socialLinks } from '../../data/socialLinks';
+import HeroIcon from '../../assets/icons/HeroIcon.astro';
+import { socialLinksAstro } from '../../data/socialLinksAstro';
+import RightArrow from '../../assets/icons/RightArrow.astro';
 ---
 
 <section
@@ -15,7 +15,7 @@ import { socialLinks } from '../../data/socialLinks';
       <span class='font-bold'>modern web experiences</span>
     </h1>
 
-    <p class='text-zinc-500 mt-6 max-w-lg leading-relaxed'>
+    <p class='text-zinc-500 mt-6 max-w-lg leading-relaxed dark:text-zinc-400'>
       I build modern, responsive and user-friendly web applications focused on
       performance, accessibility and clean design.
     </p>
@@ -23,30 +23,16 @@ import { socialLinks } from '../../data/socialLinks';
     <div class='flex gap-4 mt-8'>
       <a
         href='#projects'
-        class='group bg-black text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2'
+        class='group bg-black text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 dark:bg-primary-textDark dark:text-primary-bgDark'
       >
         View Projects
         <span class='transition-transform group-hover:translate-x-1'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='24'
-            height='24'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            stroke-width='1.5'
-            stroke-linecap='round'
-            stroke-linejoin='round'
-            class='icon icon-tabler icons-tabler-outline icon-tabler-arrow-right'
-            ><path stroke='none' d='M0 0h24v24H0z' fill='none'></path><path
-              d='M5 12l14 0'></path><path d='M13 18l6 -6'></path><path
-              d='M13 6l6 6'></path></svg
-          >
+          <RightArrow />
         </span>
       </a>
       <a
         href='#contact'
-        class='group border-2 border-black px-6 py-3 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2'
+        class='group border-2 border-black px-6 py-3 rounded-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2 dark:border-primary-textDark dark:hover:bg-primary-textDark dark:hover:text-primary-bgDark'
       >
         Contact
       </a>
@@ -54,26 +40,28 @@ import { socialLinks } from '../../data/socialLinks';
 
     <div class='flex gap-6 mt-8'>
       {
-        socialLinks.map((link) => (
-          <a
-            href={link.href}
-            target={link.href.startsWith('mailto') ? undefined : '_blank'}
-            rel='noopener noreferrer'
-            aria-label={link.name}
-            class='border-2 border-black group rounded-lg p-3 hover:bg-black hover:scale-110 transition'
-          >
-            <img
-              src={link.icon}
-              alt={link.name}
-              class='size-6 group-hover:invert'
-            />
-          </a>
-        ))
+        socialLinksAstro.map((link) => {
+          const Icon = link.icon;
+
+          return (
+            <a
+              href={link.href}
+              target={link.href.startsWith('mailto') ? undefined : '_blank'}
+              rel='noopener noreferrer'
+              aria-label={link.name}
+              class='border-2 border-black group rounded-lg p-3 hover:bg-black hover:scale-110 transition dark:border-primary-textDark dark:hover:bg-primary-textDark dark:hover:text-primary-bgDark'
+            >
+              <Icon class='size-6 group-hover:invert dark:group-hover:invert-0' />
+            </a>
+          );
+        })
       }
     </div>
   </div>
 
   <div class='order-1 md:order-2'>
-    <Image src={hero} alt='Developer illustration' class='relative right-7' />
+    <HeroIcon
+      class='relative w-fit md:w-[420px] lg:w-[520px] right-7 md:right-10 lg:right-0 dark:invert'
+    />
   </div>
 </section>
