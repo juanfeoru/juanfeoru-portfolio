@@ -1,7 +1,8 @@
-import mockupDigitalBank from '../assets/images/mockup-digitalbank.webp';
-import mockupFylo from '../assets/images/mockup-fylo.webp';
-import mockupSunnyside from '../assets/images/mockup-sunnyside.webp';
-import mockupLoopstudios from '../assets/images/moclup-loopstudios.webp';
+import mockupDigitalBank from '../assets/images/mockups/mockup-digitalbank.webp';
+import mockupFylo from '../assets/images/mockups/mockup-fylo.webp';
+import mockupSunnyside from '../assets/images/mockups/mockup-sunnyside.webp';
+import mockupLoopstudios from '../assets/images/mockups/moclup-loopstudios.webp';
+import mockupWeathernow from '../assets/images/mockups/mockup-weathernow.webp';
 
 interface Project {
   id: number;
@@ -15,12 +16,12 @@ interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    name: 'Sunnyside Agency Landing Page',
+    name: 'Weather Now App',
     description:
-      'A responsive agency landing page built with Astro, focused on clean layout, strong visual hierarchy, and optimized images. The project recreates the Sunnyside creative agency concept using reusable components and modern UI practices.',
-    image: mockupSunnyside,
-    demo: 'https://sunnyside-agency-landing-astro.netlify.app/',
-    github: 'https://github.com/juanfeoru/sunnyside-agency-landing-page',
+      'A clean and responsive weather application that allows users to search for any city and view current conditions, hourly forecasts, and upcoming daily weather. Built with React and TypeScript, featuring a debounced search experience and a modern UI.',
+    image: mockupWeathernow,
+    demo: 'https://weather-app-ui-react.netlify.app/',
+    github: 'https://github.com/juanfeoru/weather-app',
   },
   {
     id: 2,
@@ -49,5 +50,14 @@ export const projects: Project[] = [
     image: mockupDigitalBank,
     demo: 'https://digital-bank-landing.netlify.app/',
     github: 'https://github.com/juanfeoru/digitalbank-landing-page',
+  },
+  {
+    id: 5,
+    name: 'Sunnyside Agency Landing Page',
+    description:
+      'A responsive agency landing page built with Astro, focused on clean layout, strong visual hierarchy, and optimized images. The project recreates the Sunnyside creative agency concept using reusable components and modern UI practices.',
+    image: mockupSunnyside,
+    demo: 'https://sunnyside-agency-landing-astro.netlify.app/',
+    github: 'https://github.com/juanfeoru/sunnyside-agency-landing-page',
   },
 ];
