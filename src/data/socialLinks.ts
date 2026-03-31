@@ -1,7 +1,7 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 
-import Github from '../assets/icons/social/astro/Github.astro';
-import Gmail from '../assets/icons/social/astro/Gmail.astro';
+import Github from '../assets/icons/social/Github.astro';
+import Gmail from '../assets/icons/social/Gmail.astro';
 
 interface SocialLink {
   name: string;
